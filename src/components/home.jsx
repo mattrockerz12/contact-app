@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import TodoForm from "./todoForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faPenSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import ContactForm from "./contactForm";
 
 const Home = () => {
   const [data, setData] = useState({
@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <>
-      <TodoForm data={data} setData={setData} />
+      <ContactForm data={data} setData={setData} />
       <table className="table">
         <thead>
           <tr>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const TodoForm = ({ data, setData }) => {
+const ContactForm = ({ data, setData }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -85,4 +85,4 @@ const TodoForm = ({ data, setData }) => {
   );
 };
 
-export default TodoForm;
+export default ContactForm;
