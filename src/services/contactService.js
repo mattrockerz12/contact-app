@@ -1,27 +1,24 @@
 import http from "./httpService";
 
-const apiEndpoint = "http://localhost:8000/api/contacts";
-
-const contactUrl = (id) => {
-  return `${apiEndpoint}/${id}`;
-};
-
 export const getContacts = () => {
-  return http.get(apiEndpoint);
+  return http.get("http://localhost:8080/api/users");
 };
 
 export const getContact = (contactId) => {
-  return http.get(contactUrl(contactId));
+  return http.get(`http://localhost:8080/api/users/${contactId}`);
 };
 
 export const saveContact = (contact) => {
-  return http.post(apiEndpoint, contact);
+  return http.post("http://localhost:8080/api/add");
 };
 
 export const editContact = (contactId, contact) => {
-  return http.put(contactUrl(contactId), contact);
+  return http.put(
+    `http://localhost:8080/api/update/update/${contactId}`,
+    contact
+  );
 };
 
 export const deleteContact = (contactId) => {
-  return http.delete(contactUrl(contactId));
+  return http.delete(`http://localhost:8080/api/delete/${contactId}`);
 };
