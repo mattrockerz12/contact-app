@@ -1,4 +1,6 @@
 import React from "react";
+import { createContact, updateContact } from "../redux/actions/contactActions";
+import { useDispatch } from "react-redux";
 
 const ContactForm = ({ data, setData }) => {
   const handleChange = (e) => {
@@ -10,10 +12,18 @@ const ContactForm = ({ data, setData }) => {
     }));
   };
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(data);
+    if (data.id) {
+      dispatch(updateContact(data.id, data));
+    } else {
+      dispatch(createContact(data));
+    }
+
+    //console.log(data);
 
     setData({
       name: "",
@@ -38,7 +48,7 @@ const ContactForm = ({ data, setData }) => {
                     type="text"
                     id="name"
                     name="name"
-                    value={data.name}
+                    defaultValue={data.name}
                     className="form-control"
                     onChange={handleChange}
                   />
@@ -53,7 +63,7 @@ const ContactForm = ({ data, setData }) => {
                     type="text"
                     id="email"
                     name="email"
-                    value={data.email}
+                    defaultValue={data.email}
                     className="form-control"
                     onChange={handleChange}
                   />
@@ -68,14 +78,14 @@ const ContactForm = ({ data, setData }) => {
                 type="text"
                 id="contact"
                 name="contact"
-                value={data.contact}
+                defaultValue={data.contact}
                 className="form-control"
                 onChange={handleChange}
               />
             </div>
             <div className="mb-4">
               <button className="btn btn-primary" type="submit">
-                Add
+                {data.id ? "Update" : "Add"}
               </button>
             </div>
           </form>
